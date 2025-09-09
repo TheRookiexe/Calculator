@@ -57,7 +57,7 @@ function operation(var1, var2, operator){
         case '%':
             return mod(var1,var2);
             break;
-        case 'pow':
+        case '^':
             return power(var1, var2);
             break;
         default:
@@ -140,3 +140,14 @@ seven_btn.addEventListener("click", ()=> displayScreen(seven));
 eight_btn.addEventListener("click", ()=> displayScreen(eight));
 nine_btn.addEventListener("click", ()=> displayScreen(nine));
 
+plus_btn.addEventListener("click", ()=> displayScreen(plus_btn.value));
+subtract_btn.addEventListener("click", ()=> displayScreen(subtract_btn.value));
+multi_btn.addEventListener("click", ()=> displayScreen(multi_btn.value));
+divide_btn.addEventListener("click", ()=> displayScreen(divide_btn.value));
+power_btn.addEventListener("click", ()=> displayScreen(power_btn.value));
+mod_btn.addEventListener("click", ()=> displayScreen(mod_btn.value));
+fact_btn.addEventListener("click", ()=> displayScreen(fact_btn.value));
+
+function result(){
+
+}
