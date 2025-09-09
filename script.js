@@ -147,7 +147,31 @@ divide_btn.addEventListener("click", ()=> displayScreen(divide_btn.value));
 power_btn.addEventListener("click", ()=> displayScreen(power_btn.value));
 mod_btn.addEventListener("click", ()=> displayScreen(mod_btn.value));
 fact_btn.addEventListener("click", ()=> displayScreen(fact_btn.value));
+dot_btn.addEventListener("click", ()=> displayScreen(decimal));
 
-function result(){
+function parseAndEvaluate(expr) {
+    if (expr.endsWith('!')) {
+        let number = parseFloat(expr.slice(0, -1));
+        if (isNaN(number)) return "Invalid!";
+        return fact(number);
+    }
 
+    let operatorMatch = expr.match(/[\+\-\×\÷\%\^]/);
+    if (!operatorMatch) return "Invalid Expression";
+
+    let operator = operatorMatch[0];
+    let parts = expr.split(operator);
+
+    let var1 = parseFloat(parts[0]);
+    let var2 = parseFloat(parts[1]);
+
+    if (isNaN(var1) || isNaN(var2)) return "Invalid Numbers";
+
+    return operation(var1, var2, operator);
 }
+
+equals_btn.addEventListener("click", () => {
+    let expr = disDiv.textContent;
+    let result = parseAndEvaluate(expr);
+    disDiv.textContent = result;
+});
