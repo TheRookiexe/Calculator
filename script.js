@@ -37,28 +37,28 @@ let operator;
 function operation(var1, var2, operator){
     switch (operator) {
         case '+':
-            add(var1, var2);
+            return add(var1, var2);
             break;
         
         case '-':
-            subtract(var1, var2);
+            return subtract(var1, var2);
             break;
 
         case '×':
-            multiply(var1, var2);
+            return multiply(var1, var2);
             break;
         
         case '÷':
-            divide(var1, var2);
+            return divide(var1, var2);
             break;
         case '!':
-            fact(var1);
+            return fact(var1);
             break;
         case '%':
-            mod(var1,var2);
+            return mod(var1,var2);
             break;
         case 'pow':
-            power(var1, var2);
+            return power(var1, var2);
             break;
         default:
             return 'Invalid Entry!';
@@ -68,6 +68,7 @@ function operation(var1, var2, operator){
 
 //==========================Digits==============================//
 const display = document.querySelector('.screen');
+
 const zero_btn = document.getElementById('zero');
 const one_btn = document.getElementById('one');
 const two_btn = document.getElementById('two');
@@ -98,3 +99,44 @@ const divide_btn = document.getElementById('divide');
 const power_btn = document.getElementById('power');
 const mod_btn = document.getElementById('modulos');
 const fact_btn = document.getElementById('factor');
+
+//=============================cal function================================//
+const clear_btn = document.getElementById('clear');
+const dot_btn = document.getElementById('decimal');
+const equals_btn = document.getElementById('equals');
+
+const equlas = equals_btn.value;
+const decimal = dot_btn.value;
+const clear = clear_btn.value;
+
+const disDiv = document.createElement('div');
+disDiv.setAttribute("style",`
+    display:flex; 
+    justify-content:end;
+    padding:1px; 
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+`);
+
+function clearScreen(cls){
+    disDiv.textContent="";
+}
+clear_btn.addEventListener("click", ()=> clearScreen(clear));
+
+function displayScreen(val){
+    disDiv.textContent+=val;
+}
+display.append(disDiv);
+
+zero_btn.addEventListener("click", ()=> displayScreen(zero));
+one_btn.addEventListener("click", ()=> displayScreen(one));
+two_btn.addEventListener("click", ()=> displayScreen(two));
+three_btn.addEventListener("click", ()=> displayScreen(three));
+four_btn.addEventListener("click", ()=> displayScreen(four));
+five_btn.addEventListener("click", ()=> displayScreen(five));
+six_btn.addEventListener("click", ()=> displayScreen(six));
+seven_btn.addEventListener("click", ()=> displayScreen(seven));
+eight_btn.addEventListener("click", ()=> displayScreen(eight));
+nine_btn.addEventListener("click", ()=> displayScreen(nine));
+
