@@ -175,3 +175,4 @@ equals_btn.addEventListener("click", () => {
     let result = parseAndEvaluate(expr);
     disDiv.textContent = result;
 });
+
